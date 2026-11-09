@@ -13,8 +13,8 @@ func main() {
 
 	for {
 		g.PrintBoard()
-		if g.Turn() == "X" {
-			fmt.Printf("Player %s, enter your move (1-9): ", g.Turn())
+		if g.Turn() == 'X' {
+			fmt.Printf("Player %c, enter your move (1-9): ", g.Turn())
 			_, err = fmt.Scanf("%d\n", &position)
 			if err != nil {
 				fmt.Println("Invalid input. Please enter a number between 1 and 9.")
@@ -34,7 +34,7 @@ func main() {
 
 		if g.CheckWin() {
 			g.PrintBoard()
-			fmt.Printf("Player %s wins!\n", g.Turn())
+			fmt.Printf("Player %c wins!\n", g.Turn())
 			break
 		}
 

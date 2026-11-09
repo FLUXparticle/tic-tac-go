@@ -5,15 +5,15 @@ import "fmt"
 
 // TicTacToe represents a Tic-Tac-Toe game
 type TicTacToe struct {
-	board [9]string
-	turn  string
+	board [9]rune
+	turn  rune
 }
 
 // NewGame initializes a new Tic-Tac-Toe game
 func NewGame() *TicTacToe {
 	return &TicTacToe{
-		board: [9]string{"1", "2", "3", "4", "5", "6", "7", "8", "9"},
-		turn:  "X",
+		board: [9]rune{'1', '2', '3', '4', '5', '6', '7', '8', '9'},
+		turn:  'X',
 	}
 }
 
@@ -28,7 +28,7 @@ func (t *TicTacToe) PrintBoard() {
 
 // MakeMove makes a move on the board
 func (t *TicTacToe) MakeMove(position int) bool {
-	if position < 1 || position > 9 || t.board[position-1] == "X" || t.board[position-1] == "O" {
+	if position < 1 || position > 9 || t.board[position-1] == 'X' || t.board[position-1] == 'O' {
 		return false
 	}
 	t.board[position-1] = t.turn
@@ -37,10 +37,10 @@ func (t *TicTacToe) MakeMove(position int) bool {
 
 // SwitchTurn switches the turn between players
 func (t *TicTacToe) SwitchTurn() {
-	if t.turn == "X" {
-		t.turn = "O"
+	if t.turn == 'X' {
+		t.turn = 'O'
 	} else {
-		t.turn = "X"
+		t.turn = 'X'
 	}
 }
 
@@ -63,7 +63,7 @@ func (t *TicTacToe) CheckWin() bool {
 // CheckDraw checks if the game is a draw
 func (t *TicTacToe) CheckDraw() bool {
 	for _, cell := range t.board {
-		if cell != "X" && cell != "O" {
+		if cell != 'X' && cell != 'O' {
 			return false
 		}
 	}
@@ -71,18 +71,18 @@ func (t *TicTacToe) CheckDraw() bool {
 }
 
 // colorize adds color to X and O
-func colorize(s string) string {
+func colorize(s rune) string {
 	switch s {
-	case "X":
-		return red + s + reset
-	case "O":
-		return blue + s + reset
+	case 'X':
+		return red + string(s) + reset
+	case 'O':
+		return blue + string(s) + reset
 	default:
-		return s
+		return string(s)
 	}
 }
 
 // Turn returns the mark of the player whose turn it is.
-func (t *TicTacToe) Turn() string {
+func (t *TicTacToe) Turn() rune {
 	return t.turn
 }

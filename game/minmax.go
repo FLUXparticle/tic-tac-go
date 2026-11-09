@@ -21,7 +21,7 @@ func (t *TicTacToe) Minimax() int {
 
 	bestScore := math.Inf(-1)
 	for i := 0; i < 9; i++ {
-		if t.board[i] != "X" && t.board[i] != "O" {
+		if t.board[i] != 'X' && t.board[i] != 'O' {
 			// Create a copy of the current game state
 			c := new(TicTacToe)
 			*c = *t
@@ -40,7 +40,7 @@ func (t *TicTacToe) BestMove() int {
 	bestScore := math.Inf(-1)
 	move := -1
 	for i := 0; i < 9; i++ {
-		if t.board[i] != "X" && t.board[i] != "O" {
+		if t.board[i] != 'X' && t.board[i] != 'O' {
 			// Create a copy of the current game state
 			c := new(TicTacToe)
 			*c = *t
